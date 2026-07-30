@@ -143,6 +143,22 @@ img{display:block;max-width:100%}
 .kpi__label{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:4px}
 .kpi__label--orange{color:var(--orange)}.kpi__label--pink{color:var(--pink)}.kpi__label--purple{color:var(--purple)}.kpi__label--blue{color:var(--blue)}
 
+/* AWARDS — with images */
+.awards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.award-card{text-align:center;padding:24px 16px}
+.award-card__badge{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
+.award-card__badge--cannes{background:linear-gradient(135deg,#EF8205,#E65390)}
+.award-card__badge--kyoorius{background:linear-gradient(135deg,#E65390,#9B57A4)}
+.award-card__badge--abby{background:linear-gradient(135deg,#9B57A4,#694FAD)}
+.award-card__badge--emp{background:linear-gradient(135deg,#694FAD,#4072D1)}
+.award-card__badge svg{width:26px;height:26px;stroke:#fff;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.award-card h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.award-card p{font-size:12.5px;margin:0}
+.award-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.award-img{border-radius:var(--r);overflow:hidden;border:1px solid var(--ln);aspect-ratio:4/3;transition:transform .2s,box-shadow .2s}
+.award-img:hover{transform:translateY(-3px);box-shadow:var(--sh-m)}
+.award-img img{width:100%;height:100%;object-fit:cover}
+
 /* EXPERIENCE */
 .tl{position:relative;padding-left:32px}
 .tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:3px;background:linear-gradient(180deg,var(--orange),var(--pink),var(--purple),var(--blue));border-radius:2px}
@@ -196,6 +212,110 @@ img{display:block;max-width:100%}
 .cs-award span{font-size:11px;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;border-radius:14px;background:var(--gold-w);font-weight:500}
 .cs-learn{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:var(--ink);border-left:3px solid var(--purple);padding-left:14px;line-height:1.45}
 
+/* WORK THAT WON */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+}
+
+.work-item {
+  background: var(--bgc);
+  border: 1px solid var(--ln);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: all 0.25s var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+
+.work-item:hover {
+  box-shadow: var(--sh-m);
+  border-color: var(--pink);
+  transform: translateY(-3px);
+}
+
+.work-media {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: var(--bg2);
+}
+
+.work-media img,
+.work-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s var(--ease);
+}
+
+.work-item:hover .work-media img,
+.work-item:hover .work-media video {
+  transform: scale(1.05);
+}
+
+.work-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.work-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.work-category {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pink);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.work-description {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-s);
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.work-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ln);
+}
+
+.work-tags span {
+  font-size: 11.5px;
+  color: var(--ink-s);
+  background: var(--bg2);
+  border: 1px solid var(--ln);
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-weight: 500;
+}
+
+@media(max-width:840px){
+  .work-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .work-media { height: 220px; }
+  .work-content { padding: 18px; }
+}
+
+@media(max-width:480px){
+  .work-grid { grid-template-columns: 1fr; }
+  .work-media { height: 240px; }
+}
+  
 /* SKILLS — tabular cards */
 .skill-card{padding:24px 22px}
 .skill-card__icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
@@ -206,37 +326,84 @@ img{display:block;max-width:100%}
 .skill-chips span{font-size:11.5px;color:var(--ink-s);border:1px solid var(--ln);border-radius:14px;padding:4px 10px;background:var(--bg);transition:border-color .2s,color .2s}
 .skill-chips span:hover{border-color:var(--purple);color:var(--purple)}
 
-/* AWARDS — with images */
-.awards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.award-card{text-align:center;padding:24px 16px}
-.award-card__badge{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
-.award-card__badge--cannes{background:linear-gradient(135deg,#EF8205,#E65390)}
-.award-card__badge--kyoorius{background:linear-gradient(135deg,#E65390,#9B57A4)}
-.award-card__badge--abby{background:linear-gradient(135deg,#9B57A4,#694FAD)}
-.award-card__badge--emp{background:linear-gradient(135deg,#694FAD,#4072D1)}
-.award-card__badge svg{width:26px;height:26px;stroke:#fff;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.award-card h3{font-size:15px;font-weight:700;margin-bottom:6px}
-.award-card p{font-size:12.5px;margin:0}
-.award-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
-.award-img{border-radius:var(--r);overflow:hidden;border:1px solid var(--ln);aspect-ratio:4/3;transition:transform .2s,box-shadow .2s}
-.award-img:hover{transform:translateY(-3px);box-shadow:var(--sh-m)}
-.award-img img{width:100%;height:100%;object-fit:cover}
+
+<!-- TESTIMONIALS -->
+<section class="sec sec--t" id="testimonials">
+<div class="wrap">
+<div class="sec-h reveal"><span class="ey ey--pink">Testimonials</span><h2>What mentees and colleagues say.</h2></div>
+
+<div class="testimonials-grid reveal">
 
 /* TESTIMONIALS */
-.carousel{position:relative;max-width:680px;margin:0 auto}
-.carousel__track{overflow:hidden}
-.carousel__slides{display:flex;transition:transform .45s var(--ease)}
-.carousel__slide{min-width:100%;padding:0 8px}
-.qcard{background:var(--bgc);border:1px solid var(--ln);border-radius:var(--r);padding:32px;text-align:center}
-.qcard__mark{font-family:'Playfair Display',serif;font-size:48px;color:var(--purple);opacity:.4;line-height:1;margin-bottom:8px}
-.qcard blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(16px,2vw,19px);color:var(--ink);margin:0 0 16px;line-height:1.5}
-.qcard cite{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-f)}
-.c-nav{display:flex;justify-content:center;gap:8px;margin-top:24px;align-items:center}
-.c-dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--ink-g);background:transparent;cursor:pointer;padding:0;transition:all .2s}
-.c-dot.active{border-color:var(--purple);background:var(--purple)}
-.c-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--ln);background:var(--bgc);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s}
-.c-btn:hover{border-color:var(--purple)}
-.c-btn svg{width:14px;height:14px;stroke:var(--ink-s);stroke-width:2;fill:none}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.testimonial-card {
+  background: var(--bgc);
+  border: 1px solid var(--ln);
+  border-radius: var(--r);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s var(--ease);
+  position: relative;
+}
+
+.testimonial-card:hover {
+  box-shadow: var(--sh-m);
+  border-color: var(--pink);
+  transform: translateY(-2px);
+}
+
+.testimonial-quote {
+  margin-bottom: 16px;
+}
+
+.quote-mark {
+  width: 28px;
+  height: 28px;
+  color: var(--pink);
+  opacity: 0.3;
+}
+
+.testimonial-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-s);
+  margin-bottom: 20px;
+  flex-grow: 1;
+  font-style: italic;
+}
+
+.testimonial-author {
+  border-top: 1px solid var(--ln);
+  padding-top: 16px;
+}
+
+.testimonial-author h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  color: var(--ink);
+}
+
+.testimonial-author span {
+  font-size: 12px;
+  color: var(--ink-f);
+  display: block;
+}
+
+@media(max-width:840px){
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-card { padding: 22px; }
+}
+
+@media(max-width:480px){
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
 
 /* EDUCATION */
 .edu{display:flex;gap:18px;align-items:flex-start}
@@ -297,7 +464,16 @@ img{display:block;max-width:100%}
 <span class="nav__name">Vidisha Todkar</span>
 </a>
 <nav class="nav__links" id="navLinks" role="navigation" aria-label="Main">
-<a href="#about">About</a><a href="#highlights">Highlights</a><a href="#experience">Experience</a><a href="#clients">Clients</a><a href="#cases">Case Studies</a><a href="#skills">Skills</a><a href="#awards">Awards</a><a href="#contact">Contact</a>
+<a href="#about">About</a>
+<a href="#work-that-won">Work That Won</a>
+<a href="#awards">Awards</a>
+<a href="#highlights">Highlights</a>
+<a href="#clients">Clients</a>
+<a href="#experience">Experience</a>
+<a href="#cases">Case Studies</a>
+<a href="#skills">Skills</a>
+<a href="#testimonials">Testimonials</a>
+<a href="#contact">Contact</a>
 </nav>
 <div class="nav__r">
 <button class="theme-t" id="themeT" aria-label="Toggle dark mode">
@@ -373,6 +549,88 @@ img{display:block;max-width:100%}
 </div>
 </section>
 
+  <!-- WORK THAT WON -->
+<section class="sec sec--t" id="work-that-won">
+<div class="wrap">
+<div class="sec-h reveal"><span class="ey ey--orange">Work That Won</span><h2>Campaigns and strategies that moved markets.</h2></div>
+
+<div class="work-grid reveal">
+
+<!-- Work Item 1: RuPay -->
+<div class="work-item">
+<div class="work-media">
+<video width="100%" controls style="border-radius: var(--r); width: 100%; height: auto;">
+<source src="rupay-campaign.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div>
+<div class="work-content">
+<h3>RuPay: Celebrating Spontaneity</h3>
+<p class="work-category">Fintech · Content IP Strategy</p>
+<p class="work-description">15% market share growth against Visa & Mastercard. Content IP strategy across IPL & festive platforms, repositioning a domestic network through cultural proximity.</p>
+<div class="work-tags">
+<span>Market Share +15%</span>
+<span>Brand Power +6%</span>
+<span>Recommendation +9%</span>
+</div>
+</div>
+</div>
+
+<!-- Work Item 2: Johnson's Baby -->
+<div class="work-item">
+<div class="work-media">
+<img src="johnsons-baby-campaign.jpg" alt="Johnson's Baby Project Golden Minute" style="border-radius: var(--r); width: 100%; height: auto; object-fit: cover;">
+</div>
+<div class="work-content">
+<h3>Johnson's Baby: Project Golden Minute</h3>
+<p class="work-category">FMCG · Campaign Strategy</p>
+<p class="work-description">Cannes Lions 2026 Shortlist. Proved heritage promise by training 200K+ midwives across 91% of India's districts. Shifted emotional connection in fragmented market.</p>
+<div class="work-tags">
+<span>Cannes Lions Shortlist</span>
+<span>Ad Recall +4.3×</span>
+<span>6 Kyoorius Elephants</span>
+</div>
+</div>
+</div>
+
+<!-- Work Item 3: Navratna -->
+<div class="work-item">
+<div class="work-media">
+<img src="navratna-campaign.jpg" alt="Navratna Gen Z Repositioning" style="border-radius: var(--r); width: 100%; height: auto; object-fit: cover;">
+</div>
+<div class="work-content">
+<h3>Navratna: Legacy Meets Gen Z</h3>
+<p class="work-category">FMCG · Brand Repositioning</p>
+<p class="work-description">Reframed cooling oil as stress-reset ritual for youth without alienating core audience. Expanded market through cultural relevance, not category redefinition.</p>
+<div class="work-tags">
+<span>15+ Strategies Pitched</span>
+<span>50% Pitch Win Rate</span>
+<span>2 Creative Nominations</span>
+</div>
+</div>
+</div>
+
+<!-- Work Item 4: Netflix -->
+<div class="work-item">
+<div class="work-media">
+<img src="netflix-campaign.jpg" alt="Netflix From Recall to Recommendation" style="border-radius: var(--r); width: 100%; height: auto; object-fit: cover;">
+</div>
+<div class="work-content">
+<h3>Netflix: From Recall to Recommendation</h3>
+<p class="work-category">Streaming · Brand Affinity Strategy</p>
+<p class="work-description">Shifted brand job from "convince" to "worth advocating for." CMO/MD-level buy-in across multiple territories. Made category leader worth putting social capital behind.</p>
+<div class="work-tags">
+<span>5 Pitches Won</span>
+<span>6 Territories</span>
+<span>25+ Interviews</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+  
 <!-- HIGHLIGHTS -->
 <section class="sec sec--t" id="highlights">
 <div class="wrap">
