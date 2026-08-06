@@ -242,16 +242,14 @@ img{display:block;max-width:100%}
   background: var(--bg2);
 }
 
-<video width="100%" controls style="border-radius: var(--r); width: 100%; height: auto;">
-<source src="johnsons-baby-campaign.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-}
-
-.work-item:hover .work-media img,
-.work-item:hover .work-media video {
-  transform: scale(1.05);
-}
+<div class="work-item">
+  <div class="work-media">
+    <video width="100%" controls style="border-radius: var(--r); width: 100%; height: auto;">
+      <source src="johnsons-baby-campaign.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
 
 .work-content {
   padding: 24px;
