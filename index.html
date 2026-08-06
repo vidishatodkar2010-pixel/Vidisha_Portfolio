@@ -321,80 +321,187 @@ img{display:block;max-width:100%}
 .skill-chips{display:flex;flex-wrap:wrap;gap:6px}
 .skill-chips span{font-size:11.5px;color:var(--ink-s);border:1px solid var(--ln);border-radius:14px;padding:4px 10px;background:var(--bg);transition:border-color .2s,color .2s}
 .skill-chips span:hover{border-color:var(--purple);color:var(--purple)}
-<!-- TESTIMONIALS -->
-<section class="sec sec--t" id="testimonials">
-<div class="wrap">
-<div class="sec-h reveal" style="text-align:center;margin-left:auto;margin-right:auto"><span class="ey ey--pink">Testimonials</span><h2>What mentees and colleagues say.</h2></div>
-<div class="carousel reveal" id="carousel">
-<div class="carousel__track">
-<div class="carousel__slides" id="cSlides">
+  
+/* TESTIMONIALS CAROUSEL */
+.testimonial-carousel {
+  width: 100%;
+}
 
-<div class="carousel__slide">
-<div class="qcard">
-<div class="qcard__mark">"</div>
-<blockquote>If I had to describe Vidisha in one sentence, she's the kind of manager who teaches you how to think, not what to think. I worked with her as a junior strategist at DDB India, and brand strategy was completely new to me at the time. Looking back, I couldn't have asked for a better first manager. She never handed me answers. Instead, she'd ask the right questions, push me to think a little harder, and nudge me in the right direction until I got there myself.</blockquote>
-<p>— Nishtha Ojha, Associate Strategist, DDB India</p>
-</div>
-</div>
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
 
-<div class="carousel__slide">
-<div class="qcard">
-<div class="qcard__mark">"</div>
-<blockquote>One thing I really appreciated was the amount of ownership Vidisha trusted me with as a junior strat at Wondrlab. She'd let me approach a task however I wanted, and then give feedback so specific and thoughtful that it genuinely made the work better. I always had the freedom to explore, but I never felt left on my own. She had this balance of giving space while always having your back, which honestly is a rare quality even among strategists who've worked across global markets.</blockquote>
-<p>— Rucha Shah, Junior Strategist, Wondrlab</p>
-</div>
-</div>
+.carousel-wrapper {
+  overflow: hidden;
+  border-radius: var(--r);
+}
 
-<div class="carousel__slide">
-<div class="qcard">
-<div class="qcard__mark">"</div>
-<blockquote>A lot of the things I still do today came from working with Vidisha at DDB India. Keeping a repository of interesting insights, writing briefs for campaigns I admire just for practice, digging one layer deeper during research, making sure every thought has a reason behind it. She also taught me two lessons that have stayed with me since: Don't marry your ideas, but don't give up on them before they've had a fair chance either.</blockquote>
-<p>— Anjali Mane, Associate Brand Strategist, DDB India</p>
-</div>
-</div>
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0);
+}
 
-<div class="carousel__slide">
-<div class="qcard">
-<div class="qcard__mark">"</div>
-<blockquote>What impressed me the most was how effortlessly Vidisha could switch between brands and even between markets. One moment she'd be deeply immersed in one category, and the next she'd be thinking about something completely different with the same curiosity and creativity. That kind of range is something you'd expect from someone leading strategy at a global level, not just managing a single account. Watching her work taught me just as much as working with her did.</blockquote>
-<p>— Adwait Hari, Junior Strategist, Wondrlab</p>
-</div>
-</div>
+.carousel-item {
+  flex: 0 0 100%;
+  padding: 40px 20px;
+}
 
-<div class="carousel__slide">
-<div class="qcard">
-<div class="qcard__mark">"</div>
-<blockquote>I genuinely believe the reason I was able to grow from a junior strategist into a more confident one at DDB India was because of the foundation Vidisha helped me build. She didn't just teach me advertising. She taught me how to learn, how to navigate an agency, and most importantly, how to trust my own thinking. It's the kind of grounding that stays with you no matter where you go or what scale you end up working at.</blockquote>
-<p>— Vanshika Dang, Junior Brand Strategist, DDB India</p>
-</div>
-</div>
+.testimonial-box {
+  background: var(--bgc);
+  border: 1px solid var(--ln);
+  border-radius: var(--r);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  transition: all 0.3s var(--ease);
+}
 
-<div class="carousel__slide">
-<div class="qcard">
-<div class="qcard__mark">"</div>
-<blockquote>Any team, anywhere in the world, would be incredibly lucky to have Vidisha. She's an insightful strategist, a generous mentor, and someone who truly invests in helping the people around her grow. As someone just starting out as an associate strategist at Wondrlab, having a manager who leads with that much clarity and generosity made all the difference to how I understood the job, and how I wanted to do it.</blockquote>
-<p>— Komal Jaiswal, Associate Strategist, Wondrlab</p>
-</div>
-</div>
+.testimonial-box:hover {
+  box-shadow: var(--sh-m);
+  border-color: var(--pink);
+}
 
-</div>
-</div>
+.quote-icon {
+  font-size: 48px;
+  color: var(--pink);
+  opacity: 0.2;
+  margin-bottom: 16px;
+  line-height: 1;
+}
 
-<div class="c-nav">
-<button class="c-btn" aria-label="Previous" onclick="mvC(-1)"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
-<button class="c-dot active" onclick="goC(0)"></button>
-<button class="c-dot" onclick="goC(1)"></button>
-<button class="c-dot" onclick="goC(2)"></button>
-<button class="c-dot" onclick="goC(3)"></button>
-<button class="c-dot" onclick="goC(4)"></button>
-<button class="c-dot" onclick="goC(5)"></button>
-<button class="c-btn" aria-label="Next" onclick="mvC(1)"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
-</div>
-</div>
+.quote-text {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-s);
+  margin-bottom: 24px;
+  flex-grow: 1;
+  font-style: italic;
+  border: none;
+  margin: 0 0 24px 0;
+  padding: 0;
+}
 
-<p class="reveal" style="text-align:center;margin-top:28px;font-size:13.5px;color:var(--ink-f)">Full client references available on request.</p>
+.quote-author {
+  border-top: 1px solid var(--ln);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
 
-</section>
+.quote-author strong {
+  font-size: 15px;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.quote-author span {
+  font-size: 12px;
+  color: var(--ink-f);
+  font-weight: 500;
+}
+
+/* Carousel Controls */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--ln);
+  border-radius: 50%;
+  background: var(--bgc);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s var(--ease);
+  color: var(--ink);
+}
+
+.carousel-btn:hover {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: white;
+}
+
+.carousel-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--ln);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+}
+
+.dot.active {
+  background: var(--pink);
+  border-color: var(--pink);
+}
+
+.dot:hover {
+  border-color: var(--pink);
+}
+
+/* Mobile Responsive */
+@media(max-width:840px) {
+  .carousel-item {
+    padding: 24px 0;
+  }
+
+  .testimonial-box {
+    padding: 28px;
+    min-height: 380px;
+  }
+
+  .quote-text {
+    font-size: 15px;
+  }
+}
+
+@media(max-width:480px) {
+  .carousel-item {
+    padding: 20px 0;
+  }
+
+  .testimonial-box {
+    padding: 22px;
+    min-height: 360px;
+  }
+
+  .quote-text {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .carousel-controls {
+    gap: 16px;
+  }
+
+  .carousel-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
 
 /* EDUCATION */
 .edu{display:flex;gap:18px;align-items:flex-start}
