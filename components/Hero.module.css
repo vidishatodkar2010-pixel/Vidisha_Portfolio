@@ -87,6 +87,20 @@
   text-wrap: pretty;
 }
 
+/* The tagline gets the one deliberate colour accent outside the
+   portrait plate: this is the client's brand-palette statement line,
+   so it earns the exception to "accent lives on the plate only". */
+.tagline {
+  font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.35;
+  letter-spacing: var(--tracking-subheading);
+  color: var(--color-blush-rose);
+  max-width: 40ch;
+  margin: 0 0 var(--spacing-24);
+  text-wrap: balance;
+}
+
 /* Emphasis is weight, not colour. The accent budget is spent on the
    portrait plate and nowhere else. */
 .sub strong {

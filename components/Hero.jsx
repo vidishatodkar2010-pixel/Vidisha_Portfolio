@@ -56,10 +56,11 @@ export default function Hero() {
               <span className="poster-line">
                 <span className="poster-line__ink">I BUILD IMPACT.</span>
               </span>
-              <span className="poster-line">
-                <span className="poster-line__ink">I solve problems you didn&apos;t know needed a solution.</span>
-              </span>
             </h1>
+
+            <p className={styles.tagline}>
+              I solve problems you didn&apos;t know needed a solution.
+            </p>
 
             <p className={styles.sub}>
               8+ years turning consumer tension into commercial growth. Architect of a strategy that took{' '}
