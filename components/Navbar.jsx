@@ -98,7 +98,7 @@ export default function Navbar() {
       <div className={styles.inner}>
         <a href="#" className={styles.lockup} aria-label="Home">
           <span className={styles.mark}>
-            <img src="/assets/profile.jpeg" alt="Vidisha Todkar" width={32} height={32} />
+            <img src="/assets/Vidisha.png" alt="Vidisha Todkar" width={32} height={32} />
           </span>
           <span className={styles.lockupName}>Vidisha Todkar</span>
         </a>

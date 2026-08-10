@@ -54,10 +54,10 @@ export default function Hero() {
                 GSAP ever hides them. */}
             <h1 className={styles.headline} data-poster-lines="load">
               <span className="poster-line">
-                <span className="poster-line__ink">I don&apos;t sell decks.</span>
+                <span className="poster-line__ink">I BUILD IMPACT.</span>
               </span>
               <span className="poster-line">
-                <span className="poster-line__ink">I sell decisions.</span>
+                <span className="poster-line__ink">I solve problems you didn&apos;t know needed a solution.</span>
               </span>
             </h1>
 
