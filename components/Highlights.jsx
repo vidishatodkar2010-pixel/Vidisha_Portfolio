@@ -15,6 +15,9 @@ export default function Highlights() {
         <div className={styles.grid} data-stagger>
           {kpis.map((kpi) => (
             <div className={styles.kpi} key={kpi.label}>
+              <div className={styles.kpiIcon}>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d={kpi.icon} /></svg>
+              </div>
               <span
                 className={`stat-number stat-number--xl ${styles.num}`}
                 data-count={kpi.value}

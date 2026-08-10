@@ -13,12 +13,14 @@ import Skills from '@/components/Skills';
 import Testimonials from '@/components/Testimonials';
 import Education from '@/components/Education';
 import AtAGlance from '@/components/AtAGlance';
+import Clients from '@/components/Clients';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 /* ============================================================
    PAGE COMPOSITION
-   Clients section removed as requested.
+   Brand grid (Clients) moved to just before Contact, near the end
+   of the page, per client direction.
    ============================================================ */
 export default function Home() {
   useAnimations();
@@ -40,6 +42,7 @@ export default function Home() {
         <Testimonials />
         <Education />
         <AtAGlance />
+        <Clients />
         <Contact />
       </main>
       <Footer />

@@ -16,7 +16,7 @@ export default function About() {
                 the section. The copy and the styling are unchanged; the
                 module class outranks the element selector. */}
             <h2 className={styles.statement}>
-              &ldquo;I start with the <span className={styles.tension}>tension</span>, not the brief.&rdquo;
+              &ldquo;I solve problems you <span className={styles.tension}>didn&apos;t know</span> needed a solution.&rdquo;
             </h2>
             <p className={styles.bio}>
               Every brand I work on starts with the same question: what is the audience navigating that the category isn&apos;t addressing? I build the positioning or content architecture that resolves it, then hold the work to measurable standards — market share, brand health, recall. The other half is building strategists who can do this without me in the room.
@@ -32,6 +32,9 @@ export default function About() {
                 <span key={step.num} style={{ display: 'contents' }}>
                   {i > 0 && <div className={styles.arrow}>→</div>}
                   <div className={styles.step}>
+                    <div className={styles.stepIcon}>
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d={step.icon} /></svg>
+                    </div>
                     <span className={styles.num}>{step.num}</span>
                     <span className={styles.stepLabel} style={{ whiteSpace: 'pre-line' }}>{step.label}</span>
                   </div>

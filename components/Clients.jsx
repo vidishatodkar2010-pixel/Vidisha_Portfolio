@@ -1,6 +1,6 @@
 'use client';
 
-import { brands } from '@/lib/content';
+import { brands, basePath } from '@/lib/content';
 import styles from './Clients.module.css';
 
 /* Cleaned, background-stripped marks that actually exist in
@@ -35,7 +35,7 @@ export default function Clients() {
                   {file ? (
                     <img
                       className={styles.mark}
-                      src={`/assets/logos/${file}`}
+                      src={`${basePath}/assets/logos/${file}`}
                       alt={brand.name}
                       loading="lazy"
                       decoding="async"
