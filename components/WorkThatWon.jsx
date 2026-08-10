@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { basePath } from '@/lib/content';
 import styles from './WorkThatWon.module.css';
 
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
@@ -86,9 +87,9 @@ export default function WorkThatWon() {
           muted
           playsInline
           preload="metadata"
-          poster="/assets/johnsons-baby-campaign.jpeg"
+          poster={`${basePath}/assets/johnsons-baby-campaign.jpeg`}
         >
-          <source src="/assets/johnson-baby-campaign.mp4" type="video/mp4" />
+          <source src={`${basePath}/assets/johnson-baby-campaign.mp4`} type="video/mp4" />
         </video>
 
         {/* A silent campaign film is a poor showcase, so muted autoplay

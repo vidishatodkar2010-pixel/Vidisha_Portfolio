@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import useTheme from '@/lib/useTheme';
-import { navLinks } from '@/lib/content';
+import { navLinks, basePath } from '@/lib/content';
 import styles from './Navbar.module.css';
 
 const FOCUSABLE = 'a[href], button:not([disabled])';
@@ -98,7 +98,7 @@ export default function Navbar() {
       <div className={styles.inner}>
         <a href="#" className={styles.lockup} aria-label="Home">
           <span className={styles.mark}>
-            <img src="/assets/Vidisha.png" alt="Vidisha Todkar" width={32} height={32} />
+            <img src={`${basePath}/assets/Vidisha.png`} alt="Vidisha Todkar" width={32} height={32} />
           </span>
           <span className={styles.lockupName}>Vidisha Todkar</span>
         </a>

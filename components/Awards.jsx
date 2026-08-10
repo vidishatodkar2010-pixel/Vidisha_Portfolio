@@ -1,6 +1,6 @@
 'use client';
 
-import { awards, awardGallery } from '@/lib/content';
+import { awards, awardGallery, basePath } from '@/lib/content';
 import styles from './Awards.module.css';
 
 /* DESIGN.md: "never more than one [chromatic accent card] in a row".
@@ -36,7 +36,7 @@ export default function Awards() {
         <div className={styles.gallery} data-stagger>
           {awardGallery.map((img) => (
             <figure className={styles.galleryItem} key={img}>
-              <img src={`/assets/${img}`} alt="Award moment" loading="lazy" width={400} height={300} />
+              <img src={`${basePath}/assets/${img}`} alt="Award moment" loading="lazy" width={400} height={300} />
             </figure>
           ))}
         </div>

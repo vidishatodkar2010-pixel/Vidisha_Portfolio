@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { caseStudies } from '@/lib/content';
+import { caseStudies, basePath } from '@/lib/content';
 import styles from './CaseStudies.module.css';
 
 /* Per-case expanded body. Copy is verbatim from the original page. */
@@ -136,7 +136,7 @@ export default function CaseStudies() {
                   <div className={styles.logoPlate}>
                     {logo ? (
                       <img
-                        src={`/assets/logos/${logo}`}
+                        src={`${basePath}/assets/logos/${logo}`}
                         alt={CASE_BRAND[cs.id]}
                         loading="lazy"
                         decoding="async"

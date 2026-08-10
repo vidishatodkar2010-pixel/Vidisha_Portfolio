@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { kpis, trustBrands } from '@/lib/content';
+import { kpis, trustBrands, basePath } from '@/lib/content';
 import styles from './Hero.module.css';
 
 /* ============================================================
@@ -85,7 +85,7 @@ export default function Hero() {
           <figure className={styles.portrait}>
             <div className={styles.plate}>
               <Image
-                src="/assets/Vidisha.png"
+                src={`${basePath}/assets/Vidisha.png`}
                 alt="Vidisha Todkar"
                 width={548}
                 height={544}
@@ -138,7 +138,7 @@ export default function Hero() {
                       the varying intrinsic logo widths cannot shift layout. */}
                   {file ? (
                     <img
-                      src={`/assets/logos/${file}`}
+                      src={`${basePath}/assets/logos/${file}`}
                       alt={brand}
                       loading="lazy"
                       decoding="async"
