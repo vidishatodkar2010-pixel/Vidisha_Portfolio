@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { kpis, trustBrands, basePath } from '@/lib/content';
+import { kpis, basePath } from '@/lib/content';
 import styles from './Hero.module.css';
 
 /* ============================================================
@@ -85,7 +85,7 @@ export default function Hero() {
           <figure className={styles.portrait}>
             <div className={styles.plate}>
               <Image
-                src={`${basePath}/assets/Vidisha.png`}
+                src={`${basePath}/assets/profile.jpeg`}
                 alt="Vidisha Todkar"
                 width={548}
                 height={544}
@@ -122,35 +122,6 @@ export default function Hero() {
             </li>
           ))}
         </ul>
-
-        <div className={styles.trust}>
-          <h2 className={styles.trustLabel}>Brands I&apos;ve Built Strategy For</h2>
-          <ul className={styles.logoGrid} data-stagger>
-            {trustBrands.map((brand) => {
-              const file = LOGO_FILES[brand];
-              return (
-                <li className={styles.plateItem} key={brand}>
-                  {/* Every mark sits on a Bone White plate in BOTH themes.
-                      Tested, not lazy: on a dark canvas the Amazon wordmark
-                      and the ZEE5 disc vanish, and a brightness/invert
-                      knockout collapses Navratna and Red Bull into blobs.
-                      The plate's fixed height also reserves the space, so
-                      the varying intrinsic logo widths cannot shift layout. */}
-                  {file ? (
-                    <img
-                      src={`${basePath}/assets/logos/${file}`}
-                      alt={brand}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  ) : (
-                    <span className={styles.plateName}>{brand}</span>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
 
       </div>
     </section>
