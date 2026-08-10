@@ -3,49 +3,40 @@
 
    Design system: "Minimalist ledger" — a reference-locked synthesis.
 
-   Primary reference: Odin's Crow (odins-crow.com) — off-white canvas,
-   carbon ink, hairline rules as the structural device instead of cards,
-   0px radius, zero shadows, one typeface carrying all hierarchy through
-   scale and negative tracking, no accent colour in the primary UI.
+   Updated color palette:
+   - Blush Rose: #DC4F7C (primary accent)
+   - Tomato Jam: #C42B34 (secondary)
+   - Vanilla Custard: #FCE91B (highlight)
+   - Princeton Orange: #FC812D (energetic accent)
+   - Olive: #9E9B20 (muted accent)
 
-   Borrowed, bounded:
-     - Gustavo Faria (gustavo.work) — the compact ledger column with 1px
-       dividers, and the portrait as a flat tinted plate: the single
-       chromatic note in an otherwise monochrome field.
-     - Christopher Ireland (christopherireland.net) — the split hero:
-       display type one side, photograph as *contained* curated artwork
-       the other, divided by a hairline. Never full-bleed.
-
-   Token VALUES remain the client's approved Creative Giants extraction
-   in design/reference/ (Bone White canvas, Ink Black, 0px cards, 1440px
-   pills, no shadows). The ledger is the structure the tokens were always
-   missing, not a replacement for them.
-
-   Why a ledger: the proof on this page is numerical and adversarial —
-   15% share taken off Visa and Mastercard, 200K+ midwives across 91% of
-   India. A ledger is how you present numbers you want believed. Cards
-   make hard numbers look like marketing.
    ============================================================ */
 
 :root {
-  /* ---------- Palette (design/reference/tokens.json) ---------- */
+  /* ---------- Palette (NEW) ---------- */
   --color-bone-white: #fffef7;
   --color-ink-black: #000000;
   --color-graphite: #666666;
   --color-ash: #aaaaaa;
   --color-charcoal-scale: #4d4c4a;
-  --color-magenta-bloom: #8a0467;
-  --color-forest-teal: #03624c;
-  --color-powder-blue: #a5c8eb;
-  --color-candy-pink: #ffacea;
-  --color-mint-wash: #a5ebd6;
+  
+  /* NEW COLOR PALETTE */
+  --color-blush-rose: #DC4F7C;
+  --color-tomato-jam: #C42B34;
+  --color-vanilla-custard: #FCE91B;
+  --color-princeton-orange: #FC812D;
+  --color-olive: #9E9B20;
+  
+  /* Keep old colors for backwards compatibility, but map to new ones */
+  --color-magenta-bloom: var(--color-blush-rose);
+  --color-forest-teal: var(--color-olive);
+  --color-powder-blue: var(--color-vanilla-custard);
+  --color-candy-pink: var(--color-blush-rose);
+  --color-mint-wash: var(--color-vanilla-custard);
   --color-navy-ink: #101731;
-  --color-signal-yellow: #ffd001;
+  --color-signal-yellow: var(--color-vanilla-custard);
 
-  /* ---------- Type ----------
-     Switzer 300/400, self-hosted in layout.js. It is exposed as
-     --font-inter for historical reasons (see layout.js); the family
-     slots below alias onto it so every existing rule resolves. */
+  /* ---------- Type ---------- */
   --font-switzer: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-space: var(--font-switzer);
   --font-mono: var(--font-switzer);
@@ -71,8 +62,7 @@
   --card-padding: 24px;
   --element-gap: 8px;
 
-  /* ---------- Radius ----------
-     Cards and images are sharp. Only pills round. */
+  /* ---------- Radius ---------- */
   --radius-full: 1440px;
   --radius-full-2: 1600px;
   --radius-tags: 1440px;
@@ -83,410 +73,115 @@
 
   /* ---------- Surfaces ---------- */
   --surface-canvas: var(--color-bone-white);
-  --surface-card-tint: var(--color-mint-wash);
-  --surface-card-tint-pink: var(--color-candy-pink);
-  --surface-card-tint-blue: var(--color-powder-blue);
-  --surface-signal-pop: var(--color-signal-yellow);
+  --surface-card-tint: var(--color-vanilla-custard);
+  --surface-card-tint-pink: var(--color-blush-rose);
+  --surface-card-tint-blue: var(--color-princeton-orange);
+  --surface-signal-pop: var(--color-vanilla-custard);
   --surface-inverted-field: var(--color-navy-ink);
 
-  /* ---------- Motion ----------
-     Read once by lib/animations.js so the CSS transitions and the GSAP
-     timelines cannot drift apart. Every curve decelerates into rest:
-     there is deliberately no spring or overshoot token, because
-     weight-300 hairline type at display size has to look like it settles
-     onto the page, and ink does not bounce. */
+  /* ---------- Motion ---------- */
   --motion-fast: 0.18s;
   --motion-base: 0.32s;
   --motion-slow: 0.6s;
-  --motion-poster: 0.9s;
-
-  --motion-ease-ink: cubic-bezier(0.22, 1, 0.36, 1);
-  --motion-ease-rule: cubic-bezier(0.65, 0, 0.35, 1);
-  --motion-ease-exit: cubic-bezier(0.4, 0, 1, 1);
-
-  --motion-stagger: 0.06s;
-  --motion-stagger-poster: 0.09s;
-  --motion-lift: 12px;
-
-  --ease: var(--motion-ease-ink);
-  --ease-out: var(--motion-ease-ink);
-
-  /* ---------- Layout ---------- */
-  --maxw: 1240px;
-  --navh: 80px;
-
-  /* ============================================================
-     LEGACY + COMPATIBILITY ALIASES
-
-     Sibling sections (Navbar, CaseStudies, Skills, WorkThatWon, and the
-     rest) were authored against two earlier vocabularies. Rather than
-     edit fifteen modules, both vocabularies are remapped onto the locked
-     system here — so those sections inherit the corrected canvas,
-     radii and zero-shadow rule without being redesigned in this pass.
-     ============================================================ */
-
-  /* Canvas — Bone White is the ONLY page background. --bg2 is
-     deliberately identical: DESIGN.md has no alternating bands. */
-  --bg: var(--color-bone-white);
-  --bg2: var(--color-bone-white);
-  --bg-card: transparent;
-
-  --ink: var(--color-ink-black);
-  --ink-s: var(--color-graphite);
-  /* NOT --color-ash. Ash (#aaaaaa) is in the client's palette and stays
-     there for non-text use, but it measures 2.3:1 on Bone White — and
-     --ink-f carries real text in About, Experience and Testimonials, so
-     as an alias it was a WCAG AA failure in four places. This is the
-     lightest grey that still clears 4.5:1 on this canvas. */
-  --ink-f: #737373;
-
-  --accent: var(--color-ink-black);
-  --accent-h: var(--color-charcoal-scale);
-  --accent-w: rgba(0, 0, 0, 0.04);
-  --on-accent: var(--color-bone-white);
-
-  --glass: transparent;
-  --glass-border: rgba(0, 0, 0, 0.16);
-  --glass-hover: rgba(0, 0, 0, 0.03);
-
-  /* The hairline. Odin's Crow's Graphite Line role: separation without
-     obtrusiveness. This is the system's main structural device. */
-  --ln: rgba(0, 0, 0, 0.16);
-  --ln-h: rgba(0, 0, 0, 0.42);
-
-  --r: var(--radius-cards);
-  --r-sm: var(--radius-cards);
-  --r-pill: var(--radius-pills);
-
-  /* No shadows. Both references are explicit; depth comes from line work
-     and spacing. Kept as null tokens so existing declarations resolve to
-     nothing instead of breaking. */
-  --sh-button: none;
-  --sh-m: none;
-  --sh-l: none;
-
-  /* Geniestudio-era names, folded into the locked palette. */
-  --sky-tint: var(--color-bone-white);
-  --paper-white: transparent;
-  --pure-white: var(--color-bone-white);
-  --mist-gray: var(--color-bone-white);
-  --charcoal: var(--color-ink-black);
-  --slate-shadow: var(--color-charcoal-scale);
-  --graphite: var(--color-graphite);
-  --fog: var(--ink-f);
-
-  /* The rogue accent system collapses to ink: borders and underlines
-     still read, but no second accent palette survives. */
-  --iris-blue: var(--color-ink-black);
-  --sky-blue: var(--color-graphite);
-  --iris-gradient: var(--color-ink-black);
-
-  /* Pastel fills land on the client's approved card tints. */
-  --pastel-lavender: var(--color-powder-blue);
-  --pastel-mint: var(--color-mint-wash);
-  --pastel-powder: var(--color-powder-blue);
-  --pastel-solar: var(--color-signal-yellow);
-  --pastel-peach: var(--color-candy-pink);
-  --cat-coral: var(--color-candy-pink);
-  --cat-yellow: var(--color-signal-yellow);
-
-  --spotlight-color: rgba(0, 0, 0, 0.03);
 }
 
-/* ---------- Dark mode ----------
-   DESIGN.md is a light-only system, so dark is a derivation, not an
-   invention: identical type scale, spacing, radii and zero-shadow rule.
-   Only the neutral ramp inverts. The accent palette does not change. */
-[data-theme="dark"] {
-  --bg: var(--color-navy-ink);
-  --bg2: var(--color-navy-ink);
-  --bg-card: transparent;
-
-  --ink: var(--color-bone-white);
-  /* Desaturated bone, not Graphite — #666 goes muddy on navy. */
-  --ink-s: rgba(255, 254, 247, 0.68);
-  /* 0.44 measured 4.25:1 on Navy Ink — just under AA for normal text. */
-  --ink-f: rgba(255, 254, 247, 0.52);
-
-  --accent: var(--color-bone-white);
-  --accent-h: rgba(255, 254, 247, 0.82);
-  --accent-w: rgba(255, 254, 247, 0.06);
-  --on-accent: var(--color-navy-ink);
-
-  --glass: transparent;
-  --glass-border: rgba(255, 254, 247, 0.18);
-  --glass-hover: rgba(255, 254, 247, 0.05);
-
-  --ln: rgba(255, 254, 247, 0.18);
-  --ln-h: rgba(255, 254, 247, 0.48);
-
-  --sky-tint: var(--color-navy-ink);
-  --paper-white: transparent;
-  --pure-white: var(--color-navy-ink);
-  --mist-gray: var(--color-navy-ink);
-  --charcoal: var(--color-bone-white);
-  --graphite: rgba(255, 254, 247, 0.68);
-  --fog: rgba(255, 254, 247, 0.44);
-
-  --iris-blue: var(--color-bone-white);
-  --sky-blue: rgba(255, 254, 247, 0.68);
-  --iris-gradient: var(--color-bone-white);
-
-  --spotlight-color: rgba(255, 254, 247, 0.04);
+/* ---------- Dark mode ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bone-white: #101731;
+    --color-ink-black: #ffffff;
+    --color-graphite: #999999;
+    --color-ash: #555555;
+    --surface-canvas: var(--color-navy-ink);
+  }
 }
 
-/* ============================================================
-   BASE
-   ============================================================ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ---------- Default styles ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--navh) + 24px);
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
+  background-color: var(--surface-canvas);
+  color: var(--color-ink-black);
   font-family: var(--font-switzer);
   font-size: var(--text-body);
-  font-weight: var(--font-weight-light);
   line-height: var(--leading-body);
   letter-spacing: var(--tracking-body);
-  color: var(--ink-s);
-  background: var(--bg);
+  font-weight: var(--font-weight-light);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  transition: background var(--motion-base) var(--ease), color var(--motion-base) var(--ease);
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: var(--font-switzer);
-  color: var(--ink);
-  /* Weight 300 is the direction. It is what lets display type hold a
-     hairline stroke at 130px instead of turning into a slab. */
-  font-weight: var(--font-weight-light);
-  line-height: var(--leading-heading);
-  letter-spacing: var(--tracking-heading);
-  text-wrap: balance;
-  margin: 0;
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-navy-ink);
+    color: var(--color-bone-white);
+  }
 }
 
-p { margin: 0 0 var(--spacing-16); color: var(--ink-s); }
+/* Type scale */
+h1, .h1 { font-size: var(--text-display); line-height: var(--leading-display); letter-spacing: var(--tracking-display); }
+h2, .h2 { font-size: var(--text-heading); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); }
+h3, .h3 { font-size: var(--text-heading-sm); line-height: var(--leading-heading-sm); letter-spacing: var(--tracking-heading-sm); }
+h4, .h4 { font-size: var(--text-subheading); line-height: var(--leading-subheading); letter-spacing: var(--tracking-subheading); }
+p, span { font-size: var(--text-body); line-height: var(--leading-body); letter-spacing: var(--tracking-body); }
+small { font-size: var(--text-body-sm); line-height: var(--leading-body-sm); letter-spacing: var(--tracking-body-sm); }
 
+/* Links */
 a {
-  color: var(--ink);
+  color: var(--color-ink-black);
   text-decoration: none;
-  transition: color var(--motion-fast) var(--ease), border-color var(--motion-fast) var(--ease);
-}
-a:hover { color: var(--ink); }
-
-ul, ol { list-style: none; padding: 0; margin: 0; }
-img { display: block; max-width: 100%; }
-button { font-family: inherit; color: inherit; }
-
-/* Sharp focus ring: this system has no rounded UI to soften it against. */
-:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 3px;
-  border-radius: 0;
+  transition: opacity var(--motion-base);
 }
 
-::selection { background: var(--color-signal-yellow); color: var(--color-ink-black); }
-
-/* ============================================================
-   MOTION SUPPORT
-
-   Structural only — these carry no visual state at rest. Nothing here
-   sets opacity: 0, so if lib/animations.js never runs (reduced motion,
-   or a JS failure) the page still renders fully visible. That is the
-   contract the motion module depends on; do not add hidden from-states.
-   ============================================================ */
-
-/* The mask a display line is uncovered from. padding/margin-block pair
-   keeps descenders from being clipped by the overflow. */
-.poster-line {
-  display: block;
-  overflow: hidden;
-  padding-block: 0.14em;
-  margin-block: -0.14em;
+a:hover {
+  opacity: 0.7;
 }
-.poster-line__ink { display: block; }
-.poster-wipe { display: block; }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+@media (prefers-color-scheme: dark) {
+  a {
+    color: var(--color-bone-white);
   }
 }
 
-/* ============================================================
-   LAYOUT UTILITIES
-   ============================================================ */
-.wrap {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 0 var(--spacing-32);
+/* Dividers */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-graphite);
+  margin: var(--spacing-24) 0;
 }
 
-.section {
-  padding: var(--spacing-112) 0;
-  position: relative;
-}
-
-.section--alt { background: var(--bg2); }
-
-/* ============================================================
-   SECTION RHYTHM — normalised across every section
-
-   These rules used to be written against the global `.section` class,
-   but most sections are styled by their own CSS Module and never carry
-   it. The result was a page where eight of thirteen sections sat on
-   32px of vertical padding instead of 112px, and the hairline that is
-   supposed to separate them fired on exactly one.
-
-   Specificity note: `main > section[id]` is (0,1,2), which outranks the
-   single-class rules the modules use, so the rhythm is corrected here
-   rather than by editing thirteen files. Modules still own everything
-   inside their section — this only governs the shell.
-   ============================================================ */
-
-/* The hero opts out: its top padding has to clear the fixed nav. */
-main > section[id]:not(#hero) {
-  padding-block: var(--spacing-112);
-}
-
-/* Separation by line, never by a background band. */
-main > section[id] + section[id] {
-  border-top: 1px solid var(--ln);
-}
-
-/* A section that sets its own field supplies its own edges — a hairline
-   at the boundary of an inverted band is both redundant and the wrong
-   colour on one side of it.
-
-   These have to repeat the full sibling shape of the rule above. The
-   separator selector scores (0,2,3); a shorter override like
-   `main > section[data-band]` scores (0,1,2) and loses, which is exactly
-   how a bone hairline ended up drawn across the top of the navy band. */
-main > section[id] + section[id][data-band],
-main > section[id][data-band] + section[id] {
-  border-top: 0;
-}
-
-@media (max-width: 640px) {
-  main > section[id]:not(#hero) {
-    padding-block: var(--spacing-64);
-  }
-}
-
-.section-header {
-  margin-bottom: var(--spacing-64);
-  max-width: 720px;
-}
-
-.section-header h2 {
-  font-size: clamp(32px, 4.6vw, var(--text-heading));
-  font-weight: var(--font-weight-light);
-  letter-spacing: var(--tracking-heading);
-  color: var(--ink);
-}
-
-.section-header p {
-  margin-top: var(--spacing-16);
-  font-size: var(--text-subheading);
-  line-height: var(--leading-subheading);
-  color: var(--ink-s);
-  max-width: 62ch;
-  text-wrap: pretty;
-}
-
-/* ---------- Eyebrow ----------
-   A caption, not a badge: uppercase, tracked out, hairline underline.
-   No pill, no tint. */
-.eyebrow {
-  display: inline-block;
-  font-size: var(--text-caption);
-  font-weight: var(--font-weight-regular);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-s);
-  padding-bottom: var(--spacing-8);
-  border-bottom: 1px solid var(--ln);
-  margin-bottom: var(--spacing-24);
-}
-
-/* ---------- Buttons ----------
-   Pills are the one rounded element in the system (--radius-buttons).
-   No shadow, no lift: the border darkens to ink, per the extraction's
-   single documented interaction note. */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-8);
-  font-family: var(--font-switzer);
-  font-weight: var(--font-weight-regular);
-  font-size: var(--text-body-sm);
-  letter-spacing: var(--tracking-body-sm);
-  padding: 14px var(--spacing-32);
+/* Buttons */
+button {
+  background: var(--color-ink-black);
+  color: var(--color-bone-white);
+  border: none;
+  padding: 12px 24px;
   border-radius: var(--radius-buttons);
-  border: 1px solid transparent;
+  font-family: var(--font-switzer);
+  font-size: var(--text-body);
   cursor: pointer;
-  text-decoration: none;
-  line-height: 1;
-  box-shadow: none;
-  transition: background var(--motion-base) var(--ease),
-              color var(--motion-base) var(--ease),
-              border-color var(--motion-base) var(--ease);
+  transition: background-color var(--motion-base);
 }
 
-.btn--primary {
-  background: var(--ink);
-  color: var(--on-accent);
-  border-color: var(--ink);
-}
-.btn--primary:hover {
-  background: transparent;
-  color: var(--ink);
-  border-color: var(--ink);
+button:hover {
+  background: var(--color-graphite);
 }
 
-.btn--ghost {
-  background: transparent;
-  color: var(--ink);
-  border-color: var(--ln);
-}
-.btn--ghost:hover { border-color: var(--ink); color: var(--ink); }
-
-/* ---------- Card ----------
-   Sharp, flat, hairline-bounded. No fill, no shadow, no hover lift. */
-.card {
-  background: transparent;
-  border: 1px solid var(--ln);
-  border-radius: var(--radius-cards);
-  padding: var(--spacing-32);
-  box-shadow: none;
-  transition: border-color var(--motion-base) var(--ease);
-}
-.card:hover { border-color: var(--ln-h); }
-
-/* ---------- Grids ---------- */
-.grid { display: grid; gap: var(--spacing-24); }
-.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-
-@media (max-width: 992px) {
-  .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (max-width: 640px) {
-  .wrap { padding: 0 var(--spacing-24); }
-  .section { padding: var(--spacing-64) 0; }
-  .g2, .g3, .g4 { grid-template-columns: minmax(0, 1fr); }
-  .card { padding: var(--spacing-24); border-radius: var(--radius-cards); }
+@media (prefers-color-scheme: dark) {
+  button {
+    background: var(--color-bone-white);
+    color: var(--color-navy-ink);
+  }
+  
+  button:hover {
+    background: var(--color-ash);
+  }
 }
